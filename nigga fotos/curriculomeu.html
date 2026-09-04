@@ -1,75 +1,533 @@
 <!DOCTYPE html>
 
 <html lang="pt-BR">
-<head>
 
-    <title>Currículo</title>
-    
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #222;
+    line-height: 1.6;
+}
+
+.curriculo {
+    width: 800px;
+    max-width: 90%;
+    margin: 40px auto;
+    padding: 40px;
+
+    background-color: white;
+
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    margin-bottom: 30px;
+}
+
+.foto-container {
+    flex-shrink: 0;
+}
+
+.foto-perfil {
+    width: 150px;
+    height: 150px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+.informacoes-pessoais {
+    flex: 1;
+}
+
+.nome {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.cargo {
+    font-size: 18px;
+    color: #666;
+}
+
+.secao {
+    margin-top: 30px;
+}
+
+.titulo-secao {
+    font-size: 22px;
+
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+
+    border-bottom: 2px solid #222;
+}
+
+.lista-contatos {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contato {
+    font-size: 15px;
+}
+
+.contato-label {
+    font-weight: bold;
+}
+
+.contato-link {
+    color: #222;
+    text-decoration: none;
+}
+
+.contato-link:hover {
+    text-decoration: underline;
+}
+
+.texto-resumo {
+    text-align: justify;
+    font-size: 15px;
+}
+
+.item-formacao {
+    margin-bottom: 20px;
+}
+
+.instituicao {
+    font-size: 18px;
+}
+
+.curso {
+    font-size: 15px;
+}
+
+.periodo {
+    font-size: 14px;
+    color: #666;
+}
+
+.item-experiencia {
+    margin-bottom: 20px;
+}
+
+.cargo-experiencia {
+    font-size: 18px;
+}
+
+.empresa {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.lista-experiencia {
+    margin-top: 8px;
+    padding-left: 20px;
+}
+
+.projeto {
+    margin-bottom: 25px;
+}
+
+.titulo-projeto {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.lista-projeto {
+    padding-left: 20px;
+}
+
+.lista-projeto li {
+    margin-bottom: 5px;
+}
+
+
+.lista-idiomas {
+    list-style: none;
+}
+
+.idioma {
+    display: flex;
+    gap: 10px;
+
+    margin-bottom: 5px;
+}
+
+.idioma-nome {
+    font-weight: bold;
+}
+
+.idioma-nivel {
+    color: #666;
+}
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Currículo - Antônio Rocha da Silva</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- FOTO: troque "minha-foto.jpg" pelo nome do seu arquivo -->
-    <img src="minha-foto.jpg" alt="Foto de Antônio Rocha da Silva">
 
-    <h2>Meios de contato</h2>
-    <p>Telefone: <a href="tel:+5547984897508">+55 47 98489-7508</a></p>
-    <p>E-mail: <a href="mailto:rochadasilva554@gmail.com">rochadasilva554@gmail.com</a></p>
-    <p><a href="https://www.google.com/maps/search/?api=1&query=Rua+Navegantes+134%2C+Blumenau%2C+SC" target="_blank">📍 Rua Navegantes, 134 - Blumenau, SC</a></p>
-    <p><a href="#">Instagram</a></p>
+    <main class="curriculo">
 
-    
-    <h1>Antônio Rocha da Silva</h1>
-    <h2>Telefone: +55 47 98489-7508</h2>
-    <h2>E-mail: rochadasilva554@gmail.com</h2>
-    
-    <h1>Resumo</h1>
-    <h3>Desenvolvedor de Software em formação (ADS), com experiência prática em desenvolvimento Mobile e Backend. Premiado em feiras de ciências e com histórico de entrega de soluções reais para eventos de grande porte. Busco aplicar minha capacidade analítica e proatividade em times de desenvolvimento ágil.</h3>
+        <!-- CABEÇALHO -->
+        <header class="cabecalho">
 
-    <h1>Formação Acadêmica</h1>
-    <ul>
-        <li>Faculdade SENAC - Análise em Desenvolvimento de Sistemas - 2026 a 2028</li>
-        <li>Escola SESI – Ensino Médio Técnico em Desenvolvimento de Sistemas – 2023 a 2025 </li>
-    </ul>
+            <div class="foto-container">
+                <img
+                    class="foto-perfil"
+                    src="minha-foto.jpg"
+                    alt="Foto de Antônio Rocha da Silva"
+                >
+            </div>
 
-    <h1>Formação Profissional</h1>
-    <ul>
-        <li>Faculdade SENAC - Análise em Desenvolvimento de Sistemas - 2026 a 2028</li>
-        <li>Escola SESI – Ensino Médio Técnico em Desenvolvimento de Sistemas – 2023 a 2025 </li>
-    </ul>   
+            <div class="informacoes-pessoais">
 
-    <h1>Projetos Academicos</h1>
-    <h2>SGCA (Sistema de Gestão de Catástrofes Ambientais)</h2>
-    <ul>
-        <li>Trabalhou em equipe no desenvolvimento de um sistema para gestão de catástrofes ambientais.</li>
-        <li>Colocou na prática conhecimentos em Banco de Dados SQL com comando DDL e DML.</li>
-        <li>Apresentou na FEBIC  e conquistou 2º lugar em ciências exatas e da terra.</li>
-    </ul>
+                <h1 class="nome">
+                    Antônio Rocha da Silva
+                </h1>
 
-        <h2>Score Banking</h2>
-    <ul>
-        <li>Projeto em equipe desenvolvido durante o hackthon do +Devs2Blu de 2025.</li>
-        <li>Tinha como desafio desenvolver um sistema de pre-crédito facilitado pelo cliente, tendo como empresa ancora a AILOS.</li>
-        <li>Utilizando das softskills para guiar a equipe, desenvolver e bolar a apresentação em conjunto totalmente em inglês.</li>
-        <li>Sistema utilizou de Springboot, Angular e Infrastrutura.</li>
-    </ul>
+                <p class="cargo">
+                    Desenvolvedor de Software em formação
+                </p>
 
-        <h1>Projetos Aplicados</h1>
-    <h2>Guichê de voos inteligente - Evento do FESBRAER</h2>
-    <ul>
-        <li>Desenvolvimento de sistema para gerenciamento de filas de pilotos em evento real</li>
-        <li>Organização de múltiplas categorias e controle simultâneo de atendimentos</li>
-        <li>Aplicação utilizada durante o evento com interação direta com usuários</li>
-        <li>Atuação também na operação e ajuste do sistema em tempo real.</li>
-        <li>Tecnologias: Flutter, Next.js, Firebase, Supabase</li>
-    </ul>
+            </div>
 
-            <h2>Idiomas</h2>
-    <ul>
-        <li>Português - Nativo</li>
-        <li>Inglês - Intermediario</li>
-    </ul>
+        </header>
 
 
+        <!-- CONTATOS -->
+        <section class="secao contatos">
+
+            <h2 class="titulo-secao">
+                Meios de contato
+            </h2>
+
+            <div class="lista-contatos">
+
+                <p class="contato">
+                    <span class="contato-label">Telefone:</span>
+                    <a
+                        class="contato-link"
+                        href="tel:+5547984897508"
+                    >
+                        +55 47 98489-7508
+                    </a>
+                </p>
+
+                <p class="contato">
+                    <span class="contato-label">E-mail:</span>
+                    <a
+                        class="contato-link"
+                        href="mailto:rochadasilva554@gmail.com"
+                    >
+                        rochadasilva554@gmail.com
+                    </a>
+                </p>
+
+                <p class="contato">
+                    <a
+                        class="contato-link"
+                        href="https://www.google.com/maps/search/?api=1&query=Rua+Navegantes+134%2C+Blumenau%2C+SC"
+                        target="_blank"
+                    >
+                        📍 Rua Navegantes, 134 - Blumenau, SC
+                    </a>
+                </p>
+
+                <p class="contato">
+                    <a
+                        class="contato-link"
+                        href="#"
+                    >
+                        Instagram
+                    </a>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESUMO -->
+        <section class="secao resumo">
+
+            <h2 class="titulo-secao">
+                Resumo
+            </h2>
+
+            <p class="texto-resumo">
+                Desenvolvedor de Software em formação (ADS), com
+                experiência prática em desenvolvimento Mobile e Backend.
+                Premiado em feiras de ciências e com histórico de entrega
+                de soluções reais para eventos de grande porte. Busco
+                aplicar minha capacidade analítica e proatividade em times
+                de desenvolvimento ágil.
+            </p>
+
+        </section>
+
+
+        <!-- FORMAÇÃO ACADÊMICA -->
+        <section class="secao formacao">
+
+            <h2 class="titulo-secao">
+                Formação Acadêmica
+            </h2>
+
+            <div class="item-formacao">
+
+                <h3 class="instituicao">
+                    Faculdade SENAC
+                </h3>
+
+                <p class="curso">
+                    Análise e Desenvolvimento de Sistemas
+                </p>
+
+                <span class="periodo">
+                    2026 - 2028
+                </span>
+
+            </div>
+
+            <div class="item-formacao">
+
+                <h3 class="instituicao">
+                    Escola SESI
+                </h3>
+
+                <p class="curso">
+                    Ensino Médio Técnico em Desenvolvimento de Sistemas
+                </p>
+
+                <span class="periodo">
+                    2023 - 2025
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- FORMAÇÃO PROFISSIONAL -->
+        <section class="secao experiencia">
+
+            <h2 class="titulo-secao">
+                Formação Profissional
+            </h2>
+
+            <div class="item-experiencia">
+
+                <h3 class="cargo-experiencia">
+                    Técnico de Urnas Eletrônicas
+                </h3>
+
+                <p class="empresa">
+                    Ilha Service
+                </p>
+
+                <span class="periodo">
+                    2026
+                </span>
+
+                <ul class="lista-experiencia">
+
+                    <li>
+                        Configuração e preparação de urnas eletrônicas.
+                    </li>
+
+                    <li>
+                        Suporte técnico e resolução de problemas.
+                    </li>
+
+                    <li>
+                        Organização e controle dos equipamentos.
+                    </li>
+
+                    <li>
+                        Preparação e orientação de mesários.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJETOS ACADÊMICOS -->
+        <section class="secao projetos-academicos">
+
+            <h2 class="titulo-secao">
+                Projetos Acadêmicos
+            </h2>
+
+
+            <!-- PROJETO -->
+            <article class="projeto">
+
+                <h3 class="titulo-projeto">
+                    SGCA - Sistema de Gestão de Catástrofes Ambientais
+                </h3>
+
+                <ul class="lista-projeto">
+
+                    <li>
+                        Trabalhou em equipe no desenvolvimento de um
+                        sistema para gestão de catástrofes ambientais.
+                    </li>
+
+                    <li>
+                        Aplicação prática de conhecimentos em Banco de
+                        Dados SQL, utilizando comandos DDL e DML.
+                    </li>
+
+                    <li>
+                        Projeto apresentado na FEBIC, conquistando o
+                        2º lugar em Ciências Exatas e da Terra.
+                    </li>
+
+                </ul>
+
+            </article>
+
+
+            <!-- PROJETO -->
+            <article class="projeto">
+
+                <h3 class="titulo-projeto">
+                    Score Banking
+                </h3>
+
+                <ul class="lista-projeto">
+
+                    <li>
+                        Projeto desenvolvido em equipe durante o hackathon
+                        do +Devs2Blu 2025.
+                    </li>
+
+                    <li>
+                        Desenvolvimento de um sistema de pré-crédito
+                        facilitado pelo cliente, tendo a Ailos como
+                        empresa âncora.
+                    </li>
+
+                    <li>
+                        Utilização de soft skills para liderança e
+                        organização da equipe.
+                    </li>
+
+                    <li>
+                        Desenvolvimento e apresentação do projeto
+                        integralmente em inglês.
+                    </li>
+
+                    <li>
+                        Tecnologias: Spring Boot, Angular e infraestrutura.
+                    </li>
+
+                </ul>
+
+            </article>
+
+        </section>
+
+
+        <!-- PROJETOS APLICADOS -->
+        <section class="secao projetos-aplicados">
+
+            <h2 class="titulo-secao">
+                Projetos Aplicados
+            </h2>
+
+
+            <article class="projeto">
+
+                <h3 class="titulo-projeto">
+                    Guichê de Voos Inteligente - Evento FESBRAER
+                </h3>
+
+                <ul class="lista-projeto">
+
+                    <li>
+                        Desenvolvimento de sistema para gerenciamento
+                        de filas de pilotos em evento real.
+                    </li>
+
+                    <li>
+                        Organização de múltiplas categorias e controle
+                        simultâneo de atendimentos.
+                    </li>
+
+                    <li>
+                        Aplicação utilizada durante o evento com
+                        interação direta com usuários.
+                    </li>
+
+                    <li>
+                        Atuação na operação e ajuste do sistema
+                        em tempo real.
+                    </li>
+
+                    <li>
+                        <strong>Tecnologias:</strong>
+                        Flutter, Next.js, Firebase e Supabase.
+                    </li>
+
+                </ul>
+
+            </article>
+
+        </section>
+
+
+        <!-- IDIOMAS -->
+        <section class="secao idiomas">
+
+            <h2 class="titulo-secao">
+                Idiomas
+            </h2>
+
+            <ul class="lista-idiomas">
+
+                <li class="idioma">
+                    <span class="idioma-nome">Português</span>
+                    <span class="idioma-nivel">Nativo</span>
+                </li>
+
+                <li class="idioma">
+                    <span class="idioma-nome">Inglês</span>
+                    <span class="idioma-nivel">Intermediário</span>
+                </li>
+
+            </ul>
+
+        </section>
+
+    </main>
 
 </body>
+
 </html>
