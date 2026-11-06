@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-
+<html lang="pt-BR">
 <head>
-
-</head>
-
-<style>
+    <meta charset="UTF-8">
+    <title>Busca Veículos</title>
+    <style>
         body {
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-            max-width: 450px;
+            max-width: 550px;
             margin: 40px auto;
             padding: 24px;
             background-color: #f8f9fa;
@@ -27,70 +26,122 @@
             font-weight: 600;
         }
 
-        input {
-            width: 100%;
-            padding: 10px 14px;
+        .linha-dropdown {
+            display: flex;
+            gap: 10px;
             margin-bottom: 12px;
+        }
+
+        select {
+            flex: 1;
+            padding: 10px 14px;
             border: 1px solid #ccc;
-            border-radius: 8px; 
+            border-radius: 8px;
             font-family: inherit;
             font-size: 14px;
-            box-sizing: border-box;
             outline: none;
+            background-color: #fff;
             transition: border-color 0.2s;
         }
 
-        input:focus {
+        select:focus {
             border-color: #10b981;
         }
 
         button {
-            width: 100%;
-            padding: 12px;
+            padding: 10px 16px;
             background-color: #10b981;
             color: white;
             border: none;
             border-radius: 8px;
             font-family: inherit;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            margin-bottom: 16px;
             transition: background-color 0.2s;
         }
 
         button:hover {
-            background-color: #059669; 
+            background-color: #059669;
         }
 
-        #status {
-            margin-top: 12px;
+        #btnBuscar {
+            width: 100%;
+            padding: 12px;
+            font-size: 15px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f1f5f9;
             font-weight: 600;
-            color: #4b5563;
         }
     </style>
-
+</head>
 <body>
-    <h1>Carros</h1>
+    <h1>Consulta de Veículos</h1>
 
-    <label for="codigoFipe">Código FIPE:</label>
-  <input id="codigoFipe" type="text" placeholder="Ex: 004001-1">
+    <label for="tipo">Tipo de Veículo:</label>
+    <div class="linha-dropdown">
+        <select onChange="filtrarMarcas()" id="tipo">
+            <option value="">Selecione...</option>
+            <option value="carros">Carros</option>
+            <option value="caminhoes">Caminhões</option>
+            <option value="motos">Motos</option>
+        </select>
+    </div>
 
-    <input id="TipoCarro" placeholder="Tipo de carro">
-    <br>
-    <input id="MarcaCarro" placeholder="Marca do carro">
-    <br>
-    <input id="ModeloCarro" placeholder="Modelo do carro">
-    <br>
-    <input id="AnoCarro" placeholder="Ano do carro">
+    <label for="marca">Marca do Carro:</label>
+    <div class="linha-dropdown">
+        <select onChange="filtrarModelos()" id="marca">
+            <option value="">Aguardando tipo...</option>
+        </select>
+    </div>
 
-    <button id="btnBuscar" onclick="buscarVeiculo()">Buscar</button>
+    <label for="modelo">Modelo do Carro:</label>
+    <div class="linha-dropdown">
+        <select onChange="filtrarMarcas()" id="modelo">
+            <option value="">Aguardando marca...</option>
+        </select>
+    </div>
 
-    <div id="status"></div>
-    <ol id="listaCarros"></ol>
+    <label for="ano">Ano do Carro:</label>
+    <div class="linha-dropdown">
+        <select id="ano">
+            <option value="">Aguardando modelo...</option>
+        </select>
+    </div>
+
+    <button id="btnBuscar" onclick="buscarDetalhes()">Buscar</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Modelo</th>
+                <th>Ano</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody id="corpoTabela">
+        </tbody>
+    </table>
 
     <script src="carroApi.js"></script>
-
-
-
 </body>
+</html>

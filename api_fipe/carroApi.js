@@ -1,43 +1,94 @@
-async function buscarVeiculo() {
-  const status = document.getElementById("status");
-  const codigoFipe = document.getElementById("codigoFipe")?.value.trim();
-
-  if (!codigoFipe) {
-    status.textContent = "Por favor, digite o código FIPE.";
-    return;
-  }
-
-  status.textContent = "Carregando...";
-
-  try {
-    const response = await fetch(`https://brasilapi.com.br/api/fipe/preco/v1/${codigoFipe}`);
-
-    // Tratamento específico de status de erro
-    if (!response.ok) {
-      if (response.status === 500) {
-        throw new Error("O servidor da API está temporariamente indisponível (Erro 500). Tente novamente mais tarde.");
-      }
-      if (response.status === 404) {
-        throw new Error("Veículo não encontrado para o código FIPE informado (Erro 404).");
-      }
-      throw new Error(`Falha na requisição. Código: ${response.status}`);
+async function filtrarMarcas() {
+    try {
+        const tipo = document.getElementById("tipo").value;
+        const response = await fetch(`https://brasilapi.com.br/api/fipe/marcas/v1/${tipo}`);
+        const data = await response.json();
+        
+        const selectMarca = document.getElementById("marca");
+        selectMarca.innerHTML = '<option value="">Selecione a marca...</option>';
+        
+        data.forEach(item => {
+            const option = document.createElement("option");
+            option.value = item.valor;
+            option.textContent = item.nome;
+            selectMarca.appendChild(option);
+        });
+    } catch (error) {
+        console.error(error);
     }
-
-    const data = await response.json();
-    status.textContent = "Dados carregados com sucesso!";
-    console.log(data);
-
-  } catch (error) {
-    
-    status.textContent = error.message;
-    console.error("Detalhes do erro:", error);
-  }
 }
-function renderCarros(carros) {
-    const listaCarros = document.getElementById("listaCarros");
-    carros.forEach(c => {
-        const li = document.createElement("li");
-        li.textContent = c.valor;
-        listaCarros.appendChild(li);
-    });
+
+async function filtrarModelos() {
+    try {
+        const tipo = document.getElementById("tipo").value;
+        const marca = document.getElementById("marca").value;
+        const response = await fetch(`https://brasilapi.com.br/api/fipe/veiculos/v1/${tipo}/${marca}`);
+        const data = await response.json();
+        
+        const selectModelo = document.getElementById("modelo");
+        selectModelo.innerHTML = '<option value="">Selecione o modelo...</option>';
+        
+        data.forEach(item => {
+            const option = document.createElement("option");
+            option.value = item.valor;
+            option.textContent = item.modelo;
+            selectModelo.appendChild(option);
+        });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function filtrarAnos() {
+    try {
+        const tipo = document.getElementById("tipo").value;
+        const marca = document.getElementById("marca").value;
+        const modelo = document.getElementById("modelo").value;
+        const response = await fetch(`https://brasilapi.com.br/api/fipe/anos/v1/${tipo}/${marca}/${modelo}`);
+        const data = await response.json();
+        
+        const selectAno = document.getElementById("ano");
+        selectAno.innerHTML = '<option value="">Selecione o ano...</option>';
+        
+        data.forEach(item => {
+            const option = document.createElement("option");
+            option.value = item.valor;
+            option.textContent = item.nome;
+            selectAno.appendChild(option);
+        });
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function buscarDetalhes() {
+    try {
+        const tipo = document.getElementById("tipo").value;
+        const marca = document.getElementById("marca").value;
+        const modelo = document.getElementById("modelo").value;
+        const ano = document.getElementById("ano").value;
+        
+        const response = await fetch(`https://brasilapi.com.br/api/fipe/detalhes/v1/${tipo}/${marca}/${modelo}/${ano}`);
+        const data = await response.json();
+        
+        const corpoTabela = document.getElementById("corpoTabela");
+        const tr = document.createElement("tr");
+        
+        const tdModelo = document.createElement("td");
+        tdModelo.textContent = data.modelo;
+        
+        const tdAno = document.createElement("td");
+        tdAno.textContent = data.anoModelo;
+        
+        const tdValor = document.createElement("td");
+        tdValor.textContent = data.valor;
+        
+        tr.appendChild(tdModelo);
+        tr.appendChild(tdAno);
+        tr.appendChild(tdValor);
+        
+        corpoTabela.appendChild(tr);
+    } catch (error) {
+        console.error(error);
+    }
 }
